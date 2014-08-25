@@ -7,8 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% if student_signed_in? %>
+    <%= link_to 'Edit profile', edit_student_registration_path %>
+    <%= link_to "Sign out", destroy_student_session_path,:method => :delete %>
+  <% else %>
+    <%= link_to "Login", new_student_session_path %>
+  <% end %>
+  <%= yield %>
 </body>
 </html>
