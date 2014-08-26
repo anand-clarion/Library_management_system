@@ -1,2 +1,24 @@
-<h1>BookTransactions#index</h1>
-<p>Find me in app/views/book_transactions/index.html.erb</p>
+<% if @book_transactions.empty? %>
+  <center><h3>No Transaction</h3></center>
+<% else %>
+  <div>
+    <h3>Latest Transactions</h3>
+    <table>
+      <tr>
+        <th>Sr. No</th>
+        <th>Student</th>
+        <th>Book Title</th>
+        <th>Issue date</th>
+      </tr>
+      <% @book_transactions.each_with_index do |transaction, n| %>
+        <tr>
+          <td><%= n+1 %></td>
+          <td><%= Student.find(transaction.student_id).name.capitalize() %></td>
+          <td><%= Book.find(transaction.book_id).title.capitalize() %></td>
+          <td><%= transaction.issue_date.to_formatted_s(:long_ordinal) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
+
