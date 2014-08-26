@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825122946) do
+ActiveRecord::Schema.define(version: 20140825142921) do
+
+  create_table "book_copies", force: true do |t|
+    t.integer  "book_id"
+    t.boolean  "is_active",  default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "book_transactions", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "student_id"
+    t.datetime "issue_date"
+    t.datetime "return_date"
+    t.integer  "fine",        limit: 2, default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "books", force: true do |t|
+    t.string   "title",      limit: 30
+    t.string   "author",     limit: 30
+    t.integer  "no_of_copy", limit: 2
+    t.boolean  "is_active",             default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "students", force: true do |t|
     t.string   "name",                   limit: 40

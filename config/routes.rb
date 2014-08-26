@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'book_transactions/index'
+
+  get 'book_transactions/new'
+
+  get 'book_transactions/create'
+
+  get 'book_transactions/edit'
+
+  get 'book_transactions/update'
+
+  get 'book_transactions/destroy'
+
   get 'students/index'
 
   devise_for :students
