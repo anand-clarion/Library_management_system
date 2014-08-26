@@ -1,3 +1,16 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table { border-collapse:collapse; width:60% }
+table td, th { border-bottom: solid 2px}
+th { padding: 10px; }
+td { padding: 10px; }
+
+tr:nth-child(even):hover {
+  background-color:#C1CACA;
+}
+
+tr:nth-child(odd):hover {
+  background-color:LightBlue
+}

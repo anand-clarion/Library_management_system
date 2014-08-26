@@ -1,19 +1,8 @@
 Rails.application.routes.draw do
-  get 'book_transactions/index'
-
-  get 'book_transactions/new'
-
-  get 'book_transactions/create'
-
-  get 'book_transactions/edit'
-
-  get 'book_transactions/update'
-
-  get 'book_transactions/destroy'
-
-  get 'students/index'
-
   devise_for :students
+  resources :books
+  resources :book_copies
+  resources :book_transactions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

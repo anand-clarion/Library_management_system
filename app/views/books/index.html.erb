@@ -1,0 +1,25 @@
+<% if @books.empty? %>
+  <center><h3>No Book</h3></center>
+<% else %>
+  <div>
+    <h3> books List </h3>
+    <table>
+      <tr>
+        <th>Sr. No</th>
+        <th>Book Title</th>
+        <th>Book Author</th>
+        <th colspan = "2">Actions</th>
+      </tr>
+      <% @books.each_with_index do |book, n| %>
+        <tr>
+          <td><%= n+1 %></td>
+          <td><%= book.title.capitalize() %></td>
+          <td><%= book.author.capitalize() %></td>
+          <td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_book_path(book) %></td>
+          <td><%= link_to '<span class="glyphicon glyphicon-remove-sign"></span>'.html_safe, book_path(book), :method => :delete , data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to 'Add book', new_book_path %> 
+  </div>
+<% end %>
