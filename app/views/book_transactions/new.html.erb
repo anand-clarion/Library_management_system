@@ -10,18 +10,22 @@
     </div>
   <% end %>
   <div>
-    <%= f.label :student_id %>
+    <%= f.label :student_id %><br>
     <%= f.collection_select(:student_id, Student.all, :id, :name) %>
   </div>
+
   <div>
-    <%= f.label :book_id %>
-    <%= f.collection_select(:book_id, Book.all, :id, :title)  %>
-  </div>
+    <%= f.label :book_id %><br>
+    <%= f.collection_select(:book_id, Book.all, :id, :title) %>
+  </div><br>
+
   <div>
     <%= f.label :issue_date %>
-    <%= f.text_field :issue_date, :class => "required form-control", :value => "#{ Time.now.to_formatted_s(:long_ordinal) }", :disabled => true %>
+    <%= f.text_field :issue_date, readonly: true %>
   </div><br>
+
   <div>
     <%= f.submit class: 'btn btn-primary'%>
   </div>
+  
 <% end %>

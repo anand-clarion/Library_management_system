@@ -20,13 +20,22 @@
   </div>
 
   <div>
-    <%= f.label :issue_date %>
-    <%= f.text_field :issue_date, :value => @book_transaction.issue_date.to_formatted_s(:long_ordinal), disabled: true, :class => "required form-control" %> 
-  </div>
+    <%= f.label :issue_date %><br>
+    <%= f.text_field :issue_date, :value => @book_transaction.issue_date.to_formatted_s(:long_ordinal), disabled: true %> 
+  </div><br>
 
   <div>
-    <%= f.label :return_date %>
-    <%= f.text_field :return_date, :class => "required form-control" %>
+    <%= f.label :return_date %><br>
+    <%= f.text_field :return_date, readonly: true %>
+  </div><br>
+
+  <div>
+    <%= f.label :fine %><br>
+    <% if fine_calculation(@book_transaction.id) > 15 %>
+      <%= f.text_field :fine, readonly: true, :value => "#{ fine_calculation(@book_transaction.id) -15 }" %>
+    <% else %>
+      <%= f.text_field :fine, readonly: true %>
+    <% end %>
   </div><br>
 
   <div>

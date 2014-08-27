@@ -38,4 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'devise'
+gem 'jquery-timepicker-addon-rails'
+gem 'jquery-ui-rails'
+
 
