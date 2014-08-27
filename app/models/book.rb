@@ -1,8 +1,9 @@
 class Book < ActiveRecord::Base
   has_many :book_copies, dependent: :destroy
   has_many :book_transactions, dependent: :destroy
+  validates :no_of_copy, presence: true
   after_create :create_book_copies
-  before_update :update_book_copies
+  validate :update_book_copies, on: :update
 
   # This action create book_copies records for new book
   def create_book_copies
@@ -30,7 +31,7 @@ class Book < ActiveRecord::Base
         book = BookCopy.where(book_id: book_id).where(is_assigned: false).last(difference_in_copy.abs) 
         BookCopy.destroy(book)
       else
-        errors.add(:base, "The book are already assigned")
+        errors.add(:base, "Can't update book copy The book are already assigned")
       end 
     end
   end
