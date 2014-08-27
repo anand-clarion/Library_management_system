@@ -33,7 +33,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book's information successfully updated"
       redirect_to books_url
     else
-      render "new"
+      render "edit"
     end
   end
 
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
 
   # This action permit all accessible attributes
   def book_params
-    params.require(:book).permit(:title, :author, :no_of_copy, :issue_date, :return_date, :fine)
+    params.require(:book).permit(:title, :author, :no_of_copy)
   end
 
 end
