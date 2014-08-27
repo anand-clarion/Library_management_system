@@ -3,6 +3,7 @@ class CreateBookCopies < ActiveRecord::Migration
     create_table :book_copies do |t|
       t.belongs_to :book
       t.boolean :is_active, :default => true
+      t.boolean :is_assigned, :default => false    
       t.timestamps
     end
   end
