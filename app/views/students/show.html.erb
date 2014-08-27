@@ -1,0 +1,33 @@
+<div>Name - <%= @student.name %></div>
+<div>Email - <%= @student.email %></div>
+<div>Phone - <%= @student.phone_no %></div>
+<center>
+  <% if @student_books.empty? %>
+    <p>No book assigned</p>
+  <% else %>
+    <p>Assigned Book</p> 
+    <table>
+      <tr>
+        <th>Sr. No</th>
+        <th>Book Title</th>
+        <th>Issue date</th>
+        <th>Fine on Book</th>
+        <th>Return Book</th>
+        <th>
+      </tr>
+      <% @student_books.each_with_index do |transaction, n| %>
+        <tr>
+          <td><%= n+1 %></td>
+          <td><%= Book.find(transaction.book_id).title.capitalize() %></td>
+          <td><%= transaction.issue_date.to_formatted_s(:long_ordinal) %></td>
+          <% if (Time.now.to_date - transaction.issue_date.to_date).to_i > 15 %>
+            <td><%= (Time.now.to_date - transaction.issue_date.to_date).to_i %></td>
+          <% else %>
+            <td><%= transaction.fine %></td>
+          <% end %>
+          <td><%= link_to "Return Book", edit_book_transaction_path(transaction) %>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</center>
