@@ -8,15 +8,23 @@
         <th>Sr. No</th>
         <th>Student Name</th>
         <th>View Profile</th>
+        <% if can? :manage, @students %>
+          <th>Action</th>
+        <% end %>
       </tr>
       <% @students.each_with_index do |student, n| %>
         <tr>
           <td><%= n+1 %></td>
           <td><%= student.name %></td>
           <td><%= link_to "Show", student_path(student) %>
+          <% if can? :manage, @students %>
+            <td><button class = "btn btn-danger btn-sm"><%= check_current_status(student.id) %></button></td>
+          <% end %>
         </tr>
       <% end %>
     </table>
-    <%= link_to 'Add new student', new_student_path %> 
+    <% if can? :create, @students %>
+      <%= link_to 'Add new student', new_student_path %>
+    <% end %> 
   </div>
 <% end %>

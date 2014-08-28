@@ -12,7 +12,9 @@
         <th>Book Title</th>
         <th>Issue date</th>
         <th>Fine on Book</th>
-        <th>Return Book</th>
+        <% if can? :manage, current_student %>
+          <th>Return Book</th>
+        <% end %>
         <th>
       </tr>
       <% @books_assigned_to_student.each_with_index do |transaction, n| %>
@@ -21,11 +23,13 @@
           <td><%= transaction.book.title.capitalize() %></td>
           <td><%= transaction.issue_date.to_formatted_s(:long_ordinal) %></td>
           <% if fine_calculation(transaction.id) > 15 %>
-            <td><%=  fine_calculation(transaction.id) - 15 %></td>
+            <td><%= fine_calculation(transaction.id) - 15 %></td>
           <% else %>
             <td><%= transaction.fine %></td>
           <% end %>
-          <td><%= link_to "Return Book", edit_book_transaction_path(transaction) %>
+          <% if can? :manage, current_student %>
+            <td><%= link_to "Return Book", edit_book_transaction_path(transaction) %>
+          <% end %>
         </tr>
       <% end %>
     </table>
