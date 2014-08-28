@@ -41,5 +41,6 @@ gem 'devise'
 gem 'jquery-timepicker-addon-rails'
 gem 'jquery-ui-rails'
 gem 'cancan'
+gem 'jquery-turbolinks'
 
 
