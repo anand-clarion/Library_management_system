@@ -2,7 +2,7 @@ class BookTransactionsController < ApplicationController
 
   # This action show all book_transactions
   def index
-    @book_transactions = BookTransaction.order(created_at: :desc)
+    @book_transactions = BookTransaction.order(created_at: :desc).last(5)
   end
 
   # This action created a new book_transaction instance  
@@ -15,7 +15,7 @@ class BookTransactionsController < ApplicationController
     @book_transaction = BookTransaction.new(book_transaction_params)
     if @book_transaction.save
       flash[:notice] = "Transaction saved successfully"
-      redirect_to book_transactions_url
+      redirect_to books_url
     else
       render "new"
     end

@@ -2,7 +2,7 @@
 <div>Email - <%= @student.email %></div>
 <div>Phone - <%= @student.phone_no %></div>
 <center>
-  <% if @student_books.empty? %>
+  <% if @books_assigned_to_student.empty? %>
     <p>No book assigned</p>
   <% else %>
     <p>Assigned Book</p> 
@@ -15,10 +15,10 @@
         <th>Return Book</th>
         <th>
       </tr>
-      <% @student_books.each_with_index do |transaction, n| %>
+      <% @books_assigned_to_student.each_with_index do |transaction, n| %>
         <tr>
           <td><%= n+1 %></td>
-          <td><%= Book.find(transaction.book_id).title.capitalize() %></td>
+          <td><%= transaction.book.title.capitalize() %></td>
           <td><%= transaction.issue_date.to_formatted_s(:long_ordinal) %></td>
           <% if fine_calculation(transaction.id) > 15 %>
             <td><%=  fine_calculation(transaction.id) - 15 %></td>

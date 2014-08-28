@@ -9,37 +9,38 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= f.label :student_id %>
-    <div class = "required form-control"><%= Student.find(@book_transaction.student_id).name %></div>
+  <div class = "new_form">
+    <div>
+      <%= f.label :student_id %>
+      <div class = "required form-control"><%= @book_transaction.student.name %></div>
+    </div>
+
+    <div>
+      <%= f.label :book_id %>
+      <div class = "required form-control"><%= @book_transaction.book.title %></div>
+    </div>
+
+    <div>
+      <%= f.label :issue_date %><br>
+      <%= f.text_field :issue_date, :value => @book_transaction.issue_date.to_formatted_s(:long_ordinal), disabled: true %> 
+    </div><br>
+
+    <div>
+      <%= f.label :return_date %><br>
+      <%= f.text_field :return_date, readonly: true %>
+    </div><br>
+
+    <div>
+      <%= f.label :fine %><br>
+      <% if fine_calculation(@book_transaction.id) > 15 %>
+        <%= f.text_field :fine, readonly: true, :value => "#{ fine_calculation(@book_transaction.id) -15 }" %>
+      <% else %>
+        <%= f.text_field :fine, readonly: true %>
+      <% end %>
+    </div><br>
+
+    <div>
+      <%= f.submit class: 'btn btn-primary'%>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :book_id %>
-    <div class = "required form-control"><%= Book.find(@book_transaction.book_id).title %></div>
-  </div>
-
-  <div>
-    <%= f.label :issue_date %><br>
-    <%= f.text_field :issue_date, :value => @book_transaction.issue_date.to_formatted_s(:long_ordinal), disabled: true %> 
-  </div><br>
-
-  <div>
-    <%= f.label :return_date %><br>
-    <%= f.text_field :return_date, readonly: true %>
-  </div><br>
-
-  <div>
-    <%= f.label :fine %><br>
-    <% if fine_calculation(@book_transaction.id) > 15 %>
-      <%= f.text_field :fine, readonly: true, :value => "#{ fine_calculation(@book_transaction.id) -15 }" %>
-    <% else %>
-      <%= f.text_field :fine, readonly: true %>
-    <% end %>
-  </div><br>
-
-  <div>
-    <%= f.submit class: 'btn btn-primary'%>
-  </div>
-
 <% end %>

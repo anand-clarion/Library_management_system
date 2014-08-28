@@ -9,23 +9,24 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= f.label :student_id %><br>
-    <%= f.collection_select(:student_id, Student.all, :id, :name) %>
-  </div>
+  <div class = "new_form">
+    <div>
+      <%= f.label :student_id %><br>
+      <%= f.collection_select(:student_id, Student.all, :id, :name) %>
+    </div>
 
-  <div>
-    <%= f.label :book_id %><br>
-    <%= f.collection_select(:book_id, Book.all, :id, :title) %>
-  </div><br>
+    <div>
+      <%= f.label :book_id %><br>
+      <%= f.collection_select(:book_id, Book.all, :id, :title) %>
+    </div><br>
 
-  <div>
-    <%= f.label :issue_date %>
-    <%= f.text_field :issue_date, readonly: true %>
-  </div><br>
+    <div>
+      <%= f.label :issue_date %><br>
+      <%= f.text_field :issue_date, readonly: true %>
+    </div><br>
 
-  <div>
-    <%= f.submit class: 'btn btn-primary'%>
-  </div>
-  
+    <div>
+      <%= f.submit class: 'btn btn-primary'%>
+    </div>
+  </div>  
 <% end %>

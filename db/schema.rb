@@ -15,7 +15,8 @@ ActiveRecord::Schema.define(version: 20140825142921) do
 
   create_table "book_copies", force: true do |t|
     t.integer  "book_id"
-    t.boolean  "is_active",  default: true
+    t.boolean  "is_active",   default: true
+    t.boolean  "is_assigned", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

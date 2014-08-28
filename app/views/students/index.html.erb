@@ -12,7 +12,7 @@
       <% @students.each_with_index do |student, n| %>
         <tr>
           <td><%= n+1 %></td>
-          <td><%= student.name%></td>
+          <td><%= student.name %></td>
           <td><%= link_to "Show", student_path(student) %>
         </tr>
       <% end %>

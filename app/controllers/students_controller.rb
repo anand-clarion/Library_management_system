@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
   # This action show a student information
   def show
     @student = Student.find(params[:id]) 
-    @student_books = BookTransaction.where(student_id: @student.id).where(return_date: nil) 
+    @books_assigned_to_student = @student.book_transactions.where(return_date: nil) 
   end
 
   # This action permit all accessible attributes

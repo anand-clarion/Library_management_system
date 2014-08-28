@@ -9,19 +9,24 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title, :class => "required form-control" %>
-  </div>
-  <div>
-    <%= f.label :author %>
-    <%= f.text_field :author, :class => "required form-control" %>
-  </div>
-  <div>
-    <%= f.label :no_of_copy %>
-    <%= f.text_field :no_of_copy, :class => "required form-control" %>
-  </div>
-  <div>
-    <%= f.submit class: 'btn btn-primary'%>
-  </div>
+  <div class = "new_form">
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => "required form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :author %>
+      <%= f.text_field :author, :class => "required form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :no_of_copy %>
+      <%= f.text_field :no_of_copy, :class => "required form-control" %>
+    </div><br>
+
+    <div>
+      <%= f.submit class: 'btn btn-primary'%>
+    </div>
+  </div> 
 <% end %>

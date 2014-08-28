@@ -18,20 +18,20 @@ class BookTransaction < ActiveRecord::Base
 
   # This action check book availability to issue book to a student
   def check_book_availability
-    if BookCopy.where(book_id: self.book_id).where(is_assigned: false).count < 1
+    if self.book.book_copies.unassigned_copies.count < 1
       errors.add(:base, "Book out of stock")
     end
   end
 
   # This action update book_copy status after book issued to any student
   def update_book_copy_status_to_assigned
-    book_copy = BookCopy.where(book_id: self.book_id).where(is_assigned: false).first
+    book_copy = self.book.book_copies.unassigned_copies.first
     book_copy.update_attributes(is_assigned: true)
   end
 
   # This action update book_copy status after book return by any student
   def update_book_copy_status_to_unassigned
-    book_copy = BookCopy.where(book_id: self.book_id).where(is_assigned: true).last
+    book_copy = self.book.book_copies.where(is_assigned: true).last
     book_copy.update_attributes(is_assigned: false)
   end
 
