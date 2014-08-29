@@ -7,23 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <span class="notice"><%= notice %></span>
-  <span class="alert"><%= alert %></span>
-  <% if student_signed_in? %>
-    <ul class="nav nav-pills">
-      <li><%= link_to "students", students_path %></li>
-      <li><%= link_to "books", books_path %></li>
-      <li><%= link_to 'Add New book', new_book_path %></li>
-      <li><%= link_to "Issue book", new_book_transaction_path %></li>
-      <li><%= link_to "Latest transactions", book_transactions_path %></li>
-      <div class = "user_account_activity_link">
-        <li><%= link_to 'Edit profile', edit_student_registration_path %></li>
-        <li><%= link_to "Sign out", destroy_student_session_path,:method => :delete %></li>
-      </div>
-    </ul>
-  <% else %>
-    <%= link_to "Login", new_student_session_path %>
-  <% end %>
+  <%= render "shared/header" %>
   <%= yield %>
 </body>
 </html>

@@ -39,9 +39,14 @@ class BooksController < ApplicationController
 
   # This actoin delete a record from books table
   def destroy
-    Book.find(params[:id]).destroy
-    flash[:notice] = "Book successfully destroyed"
-    redirect_to books_url
+    @book = Book.find(params[:id])
+    if @book.destroy
+      flash[:notice] = "Book successfully destroyed"
+      redirect_to books_url
+    else
+      flash[:notice] = "Can't delete book because of dependent copies assigned"
+      redirect_to books_url
+    end
   end
 
   # This action permit all accessible attributes

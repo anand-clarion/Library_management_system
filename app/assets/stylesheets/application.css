@@ -35,3 +35,9 @@ body {
 .new_form {
   width:370px;
 }
+
+.search_form {
+  float:right;
+  margin-top:-100px;
+  margin-right:170px;
+}

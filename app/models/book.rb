@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  has_many :book_copies, dependent: :destroy
+  has_many :book_copies, :dependent => :restrict_with_error
   has_many :book_transactions, dependent: :destroy
   validates :no_of_copy, presence: true
   after_create :create_book_copies
