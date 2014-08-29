@@ -6,6 +6,13 @@ class Student < ActiveRecord::Base
   has_many :books
   has_many :book_transactions, dependent: :destroy
 
+  # This action search for matched data in table for search action 
+  def self.search(search)
+    if search
+      where("name like ? OR email like ? ", "%#{search}%","%#{search}%")
+    end
+  end
+
   # This action prohibited dectivated user from login
   def active_for_authentication?
     super && self.is_active

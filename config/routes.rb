@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   get "/deactivate" => "application#deactivate"
   get "/activate" => "application#activate"
 
+  resources :students do 
+    collection do
+      post 'search'
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

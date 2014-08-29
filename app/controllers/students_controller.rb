@@ -26,6 +26,16 @@ class StudentsController < ApplicationController
     @books_assigned_to_student = @student.book_transactions.where(return_date: nil) 
   end
 
+  # This action return data for search
+  def search
+    if !params[:search].empty?
+      @search = Student.search(params[:search])
+    else
+      flash[:notice] = "Cant search for empty string"
+      redirect_to students_url
+    end
+  end
+
   # This action permit all accessible attributes
   def student_params
     params.require(:student).permit(:name, :email, :phone_no, :password, :password_confirmation)

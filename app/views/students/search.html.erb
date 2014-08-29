@@ -1,0 +1,19 @@
+<% if @search.empty? %>
+  <h2> No result found for "<%= params[:search] %>"
+<% else %>
+  <h4>matched user</h4>
+  <table>
+    <tr>
+      <th>Sr. No</th>
+      <th>Name</th>
+      <th>email</th>
+    <tr>
+    <% @search.each_with_index do |search, n| %>
+      <tr>
+        <td><%= n+1 %></td>
+        <td><%= link_to search.name, student_path(search) %></td>
+        <td><%= search.email %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
