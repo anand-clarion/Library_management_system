@@ -1,5 +1,5 @@
 <div class = "header">
-  <div><b><%= link_to "Library Management System", students_path, :class => "logo" %></b></div>
+  <div class = "logo"><%= image_tag 'header.jpeg' %></div>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
@@ -25,7 +25,5 @@
         <%= submit_tag "Search" %>     
       <% end %>
     </div>
-  <% else %>
-    <%= link_to "Login", new_student_session_path, class: "btn btn-primary" %>
   <% end %>
 </div>

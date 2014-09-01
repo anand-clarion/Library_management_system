@@ -33,7 +33,7 @@
 }
 
 .header {
-  height:111px;
+  height:145px;
   background-color:Gainsboro;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .user_account_activity_link {
- margin-top:-113px;
+ margin-top:-138px;
 }
 
 a {
@@ -92,10 +92,9 @@ a {
   color:#AD335C;
 }
 
-.logo {
-  color:#A64D4D;
-  font-size:25px;
-  width:400px;
+.logo img {
+ height:65px;
+ width:473px;
 }
 
 .nav a:hover {
