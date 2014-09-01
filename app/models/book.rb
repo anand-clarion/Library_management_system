@@ -1,9 +1,10 @@
 class Book < ActiveRecord::Base
-  has_many :book_copies, :dependent => :restrict_with_error
+  has_many :book_copies, :dependent => :destroy
   has_many :book_transactions, dependent: :destroy
   validates :no_of_copy, presence: true
   after_create :create_book_copies
   validate :update_book_copies, on: :update
+  before_destroy :check_assigned_status,  prepend: true
 
   # This action create book_copies records for new book
   def create_book_copies
@@ -31,4 +32,10 @@ class Book < ActiveRecord::Base
     end
   end
 
+  # This action check book's copies assigned status before delete
+  def check_assigned_status
+    if self.book_copies.where(is_assigned: true).count > 0
+      return false
+    end
+  end
 end

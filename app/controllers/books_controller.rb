@@ -21,6 +21,13 @@ class BooksController < ApplicationController
     end
   end
 
+  # This actio show all book copies of a book
+  def show
+    @book = Book.find(params[:id])
+    @book_copies = @book.book_copies
+    @transactions = @book.book_transactions.where(return_date: nil)
+  end
+
   # This action edit a book inforamation
   def edit
     @book = Book.find(params[:id])
