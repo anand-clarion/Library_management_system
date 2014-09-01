@@ -12,7 +12,7 @@
         <th>Total copy</th>
         <th>No Of available copy</th>
         <% if can? :manage, @books %>
-          <th colspan = "2">Actions</th>
+          <th colspan = "3">Actions</th>
         <% end %>
       </tr>
       <% @books.each_with_index do |book, n| %>
@@ -23,14 +23,15 @@
           <td><%= book.no_of_copy %></td>
           <td><%= avialable_book_count(book.id) %></td>
           <% if can? :manage, @books %>
-            <td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_book_path(book) %></td>
-            <td><%= link_to '<span class="glyphicon glyphicon-remove-sign"></span>'.html_safe, book_path(book), :method => :delete , data: { confirm: "Are you sure?" } %></td>
+            <td><%= link_to '<span class="glyphicon glyphicon-list"></span>'.html_safe, book_path(book), :title => "See all books copies" %></td>
+            <td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_book_path(book), :title => "Edit book information" %></td>
+            <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, book_path(book), :method => :delete , data: { confirm: "Are you sure?" }, :title => "Delete book" %></td>
           <% end %>
         </tr>
       <% end %>
     </table>
     <% if can? :manage, @books %>
-      <%= link_to 'Add book', new_book_path %> 
+      <%= link_to 'Add book', new_book_path, :title => "Add a new Book" %> 
     <% end %>
   </div>
 <% end %>

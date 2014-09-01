@@ -15,9 +15,6 @@
  *= require_tree .
  *= require_self
  */
-body {
-  margin-left:50px;
- }
 
 .ui-datepicker-trigger {
   width:25px;
@@ -32,12 +29,39 @@ body {
   display: inline; 
 }
 
+.header {
+  height:100px;
+  background-color:Gainsboro;
+}
+
+.alert {
+  height:40px;
+  width:400px;
+  position:absolute;
+}
+
+.nav {
+  margin-top:40px;
+  width:600px;
+  font-weight:bold;
+}
+
+.yield_container {
+  padding:30px;
+}
+
+.user_account_activity_link {
+ margin-top:-100px;
+}
+
+a {
+  font-weight:bold
+}
+
 .new_form {
   width:370px;
 }
 
 .search_form {
   float:right;
-  margin-top:-100px;
-  margin-right:170px;
 }

@@ -1,27 +1,31 @@
-<span class="notice"><%= notice %></span>
-<span class="alert"><%= alert %></span>
-<% if student_signed_in? %>
-  <ul class="nav nav-pills">
-    <li><%= link_to "students", students_path %></li>
-    <li><%= link_to "books", books_path %></li>
-    <% if can? :manage, current_student %>
-      <li><%= link_to 'Add New book', new_book_path %></li>
-      <li><%= link_to "Issue book", new_book_transaction_path %></li>
-    <% end %>
-    <li><%= link_to "Latest transactions", book_transactions_path %></li>
+<div class = "header">
+  <span><b>Library Management System</b></span>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+  <% end %>
+  <% if student_signed_in? %>
+    <ul class="nav nav-pills">
+      <li><%= link_to "students", students_path %></li>
+      <li><%= link_to "books", books_path %></li>
+      <% if can? :manage, current_student %>
+        <li><%= link_to 'Add New book', new_book_path %></li>
+        <li><%= link_to "Issue book", new_book_transaction_path %></li>
+      <% end %>
+      <li><%= link_to "Latest transactions", book_transactions_path %></li>
+    </ul>
     <div class = "user_account_activity_link">
-      <p>Looged is as---<%= current_student.name %></p>
-      <li><%= link_to "My profile", student_path(current_student), :class => "btn btn-primary" %></li>
-      <li><%= link_to 'Edit profile', edit_student_registration_path %></li>
-      <li><%= link_to "Sign out", destroy_student_session_path,:method => :delete %></li>
+      <p>Looged in as -<b><%= current_student.name %></b></p>
+      <span><%= link_to "My profile", student_path(current_student), :class => "btn btn-primary" %></span>
+      <span><%= link_to 'Edit profile', edit_student_registration_path, :class => "btn btn-primary", :title => "Edit own information"%></span>
+      <span><%= link_to "Sign out", destroy_student_session_path,:method => :delete, :class => "btn btn-primary", :title => "Log-out" %></span>
     </div>
-  </ul>
-  <div class = "search_form">
-    <%= form_tag (search_students_path) do %>  
-      <%= text_field_tag :search, params[:search], placeholder: "Search", :size =>"25" %> 
-      <%= submit_tag "Search" %>     
-    <% end %>
-  </div>
-<% else %>
-  <%= link_to "Login", new_student_session_path %>
-<% end %>
+    <div class = "search_form">
+      <%= form_tag (search_students_path) do %>  
+        <%= text_field_tag :search, params[:search], placeholder: "Search", :size =>"25" %> 
+        <%= submit_tag "Search" %>     
+      <% end %>
+    </div>
+  <% else %>
+    <%= link_to "Login", new_student_session_path %>
+  <% end %>
+</div>

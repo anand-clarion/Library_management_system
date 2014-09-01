@@ -13,12 +13,12 @@
         <tr>
           <td><%= n+1 %></td>
           <td><%= student.name %></td>
-          <td><%= link_to "Show", student_path(student) %>
+          <td><%= link_to "Show", student_path(student), :title => "View student information" %>
         </tr>
       <% end %>
     </table>
     <% if can? :create, @students %>
-      <%= link_to 'Add new student', new_student_path %>
+      <%= link_to 'Add new student', new_student_path, :title => "Add a new student" %>
     <% end %> 
   </div>
 <% end %>
