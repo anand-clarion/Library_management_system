@@ -2,6 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.new_student_form {
-  width:370px;
+.student_field {
+  width:330px;
+}
+
+.label_field {
+  float:left;
+  width:140px;
+  text-align:right;
+  font-size:20px;
+  color:#D2691E;
+}
+
+.text-field {
+  float:right;
+}
+
+.login_image {
+  float:right;
+  margin-top:-224px;
+  margin-right:174px;
+}
+
+.login_image img {
+  height:170px;
+  width:200px;
 }

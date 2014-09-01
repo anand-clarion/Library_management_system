@@ -43,5 +43,6 @@ gem 'jquery-ui-rails'
 gem 'cancan'
 gem 'jquery-turbolinks'
 gem 'will_paginate', '~> 3.0'
+gem 'jquery-validation-rails'
 
 

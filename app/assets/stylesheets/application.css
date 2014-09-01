@@ -15,6 +15,9 @@
  *= require_tree .
  *= require_self
  */
+ body {
+  background-color:#F0F4FD;
+ }
 
 .ui-datepicker-trigger {
   width:25px;
@@ -30,7 +33,7 @@
 }
 
 .header {
-  height:100px;
+  height:111px;
   background-color:Gainsboro;
 }
 
@@ -51,7 +54,7 @@
 }
 
 .user_account_activity_link {
- margin-top:-100px;
+ margin-top:-113px;
 }
 
 a {
@@ -83,4 +86,19 @@ a {
   display:inline-block;
   height:30px;
   width:80px;
+}
+
+.error_explanation {
+  color:#AD335C;
+}
+
+.logo {
+  color:#A64D4D;
+  font-size:25px;
+  width:400px;
+}
+
+.nav a:hover {
+  font-size:14px;
+  color:green;
 }

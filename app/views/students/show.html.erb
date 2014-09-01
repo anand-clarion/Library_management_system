@@ -1,6 +1,6 @@
-<div>Name - <%= @student.name %></div>
-<div>Email - <%= @student.email %></div>
-<div>Phone - <%= @student.phone_no %></div>
+<div><b>Name - <%= @student.name %></b></div>
+<div><b>Email - <%= @student.email %></b></div>
+<div><b>Phone - <%= @student.phone_no %></b></div>
 <% if can? :manage, @students %>
   <% if !@student.is_admin?  %>
     <button class = "btn btn-danger btn-sm" id = "active_button" title = "Deactivate this student" value = "<%= @student.id %>" table = "<%= @student.class %>"><%= check_current_status(@student.id) %></button>
@@ -11,7 +11,7 @@
   <% if @books_assigned_to_student.empty? %>
     <p>No book assigned</p>
   <% else %>
-    <p>Assigned Book</p> 
+    <p><b>Assigned Book</b></p> 
     <table>
       <tr>
         <th>Sr. No</th>
@@ -21,7 +21,6 @@
         <% if can? :manage, current_student %>
           <th>Return Book</th>
         <% end %>
-        <th>
       </tr>
       <% @books_assigned_to_student.each_with_index do |transaction, n| %>
         <tr>
@@ -34,7 +33,7 @@
             <td><%= transaction.fine %></td>
           <% end %>
           <% if can? :manage, current_student %>
-            <td><%= link_to "Return Book", edit_book_transaction_path(transaction) %>
+            <td><%= link_to "Return Book", edit_book_transaction_path(transaction) %></td>
           <% end %>
         </tr>
       <% end %>

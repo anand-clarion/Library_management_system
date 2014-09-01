@@ -16,6 +16,8 @@
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon
 //= require bootstrap
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require_tree .
 
 $(document).ready(function() { 
