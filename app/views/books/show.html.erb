@@ -1,0 +1,23 @@
+<h4>Book - <%= @book.title %></h4>
+<table>
+  <tr>
+    <th>Sr no.</th>
+    <th>Copy Id</th>
+    <th>Assigned</th>
+    <th>Student</th>
+  </tr>
+  <% @book_copies.each_with_index do |copy, n| %>
+    <tr>
+      <td><%= n+1 %></td>
+      <td><%= copy.id %></td>
+      <% if copy.is_assigned? %>
+        <td>Yes</td>
+        <td><%= link_to @transactions[n].student.name, student_path(@transactions[n].student.id) %></td>
+      <% else %>
+        <td>No</td>
+        <td>-</td>
+      <% end %>
+      <td>
+    </tr>
+  <% end %>
+</table>

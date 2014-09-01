@@ -9,7 +9,7 @@ class Student < ActiveRecord::Base
   # This action search for matched data in table for search action 
   def self.search(search)
     if search
-      where("name like ? OR email like ? ", "%#{search}%","%#{search}%")
+      where("name like ? OR id like ? ", "%#{search}%","%#{search}%")
     end
   end
 

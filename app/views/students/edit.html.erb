@@ -1,0 +1,30 @@
+<%= form_for @student do |f| %>
+  <% if @student.errors.any? %>
+    <div class="error_explanation">
+      <span><b>Errors</b></span>
+      <ul>
+        <% @student.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class = "new_form">
+    <div>
+      <%= f.label :name %><br>
+      <%= f.text_field :name, :class => "required form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :email %><br>
+      <%= f.email_field :email, autofocus: true, :class => "required form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :phone_no %><br>
+      <%= f.text_field :phone_no, :class => "required form-control" %>
+    </div><br>
+
+    <div><%= f.submit class: 'btn btn-primary' %></div>
+  </div>
+<% end %>

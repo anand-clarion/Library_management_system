@@ -26,6 +26,22 @@ class StudentsController < ApplicationController
     @books_assigned_to_student = @student.book_transactions.where(return_date: nil) 
   end
 
+  # This action edit a student information.
+  def edit
+    @student = Student.find(params[:id])
+  end
+
+  # This action update a student information
+  def update
+    @student = Student.find(params[:id])
+    if @student.update_attributes(student_params)
+      flash[:notice] = "student's information successfully updated"
+      redirect_to students_url
+    else
+      render "edit"
+    end
+  end
+
   # This action return data for search
   def search
     if !params[:search].empty?

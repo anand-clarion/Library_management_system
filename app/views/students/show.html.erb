@@ -2,7 +2,8 @@
 <div>Email - <%= @student.email %></div>
 <div>Phone - <%= @student.phone_no %></div>
 <% if can? :manage, @students %>
-  <button class = "btn btn-danger btn-sm" id = "active_button" value = "<%= @student.id %>" table = "<%= @student.class %>"><%= check_current_status(@student.id) %></button>
+  <button class = "btn btn-danger btn-sm" id = "active_button" title = "Deactivate this student" value = "<%= @student.id %>" table = "<%= @student.class %>"><%= check_current_status(@student.id) %></button>
+  <%= link_to "Edit", edit_student_path(@student), :class => "btn btn-info btn-sm", :title => "Edit student information" %>
 <% end %>
 <center>
   <% if @books_assigned_to_student.empty? %>
