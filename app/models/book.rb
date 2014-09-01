@@ -2,6 +2,8 @@ class Book < ActiveRecord::Base
   has_many :book_copies, :dependent => :destroy
   has_many :book_transactions, dependent: :destroy
   validates :no_of_copy, presence: true
+  validates :title, presence: true, length: { minimum: 5 }
+  validates :author, presence: true, length: { minimum: 5 }
   after_create :create_book_copies
   validate :update_book_copies, on: :update
   before_destroy :check_assigned_status,  prepend: true

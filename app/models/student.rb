@@ -5,6 +5,8 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :books
   has_many :book_transactions, dependent: :destroy
+  validates :name, presence: true, length: { minimum: 5 }
+  validates :phone_no, length: { is: 10 , message: "must be 10 digit long" }, numericality: { only_integer: true }
 
   # This action search for matched data in table for search action 
   def self.search(search)
