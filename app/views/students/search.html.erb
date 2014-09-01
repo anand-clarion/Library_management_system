@@ -1,18 +1,41 @@
-<% if @search.empty? %>
-  <h2> No result found for "<%= params[:search] %>"
+<h3>Student</h3>
+<% if @search_student.empty? %>
+  <span class = "alert alert-danger"> No result found for "<%= params[:search] %>"</span>
 <% else %>
-  <h4>matched user</h4>
+  <h4>Matched student</h4>
   <table>
     <tr>
       <th>Sr. No</th>
       <th>Name</th>
       <th>email</th>
     <tr>
-    <% @search.each_with_index do |search, n| %>
+    <% @search_student.each_with_index do |search, n| %>
       <tr>
         <td><%= n+1 %></td>
         <td><%= link_to search.name, student_path(search) %></td>
         <td><%= search.email %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<br>
+
+<h3>Book</h3>
+<% if @search_book.empty? %>
+  <span class = "alert alert-danger"> No result found for "<%= params[:search] %>"</span>
+<% else %>
+  <h4>Matched Book</h4>
+  <table>
+    <tr>
+      <th>Sr. No</th>
+      <th>Name</th>
+      <th>author</th>
+    <tr>
+    <% @search_book.each_with_index do |search, n| %>
+      <tr>
+        <td><%= n+1 %></td>
+        <td><%= link_to search.title, book_path(search) %></td>
+        <td><%= search.author %>
       </tr>
     <% end %>
   </table>

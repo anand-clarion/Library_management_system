@@ -46,7 +46,8 @@ class StudentsController < ApplicationController
   # This action return data for search
   def search
     if !params[:search].empty?
-      @search = Student.search(params[:search])
+      @search_student = Student.search(params[:search])
+      @search_book = Book.search(params[:search])
     else
       flash[:notice] = "Cant search for empty string"
       redirect_to students_url

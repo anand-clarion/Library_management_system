@@ -8,6 +8,13 @@ class Book < ActiveRecord::Base
   validate :update_book_copies, on: :update
   before_destroy :check_assigned_status,  prepend: true
 
+  # This action search for matched data in table for search action 
+  def self.search(search)
+    if search
+      where("title like ? OR author like ? ", "%#{search}%","%#{search}%")
+    end
+  end
+
   # This action create book_copies records for new book
   def create_book_copies
     self.no_of_copy.times do 
