@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
 
   # This action show all students list
   def index
-    @students = Student.where.not(id: current_student.id) 
+    @students = Student.where.not(id: current_student.id).paginate(:page => params[:page], :per_page => 6) 
   end
 
   # This action create a new student object

@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   # This action show all books
   def index
-    @books = Book.all
+    @books = Book.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 6)
   end
 
   # This action created a new book's instance  

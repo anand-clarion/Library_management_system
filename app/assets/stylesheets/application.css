@@ -65,3 +65,22 @@ a {
 .search_form {
   float:right;
 }
+
+.pagination a {
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.current {
+  padding:5px;
+  display:inline-block;
+  height:30px;
+  width:30px;
+  background-color:#5077BE;
+}
+
+.previous_page, .next_page {
+  display:inline-block;
+  height:30px;
+  width:80px;
+}
