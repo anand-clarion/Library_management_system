@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
 
   # This action show all students list
   def index
-    @students = Student.all 
+    @students = Student.where.not(id: current_student.id) 
   end
 
   # This action create a new student object
@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
   def save
     @student = Student.new(student_params)
     if @student.save
+      StudentMailer.welcome_email(@student).deliver
       redirect_to students_url
     else
       render "new"
