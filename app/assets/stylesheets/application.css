@@ -24,21 +24,17 @@
   height:25px;
  }
 
-.user_account_activity_link {
-  float:right;
- }
-
 .field_with_errors { 
   display: inline; 
 }
 
 .header {
-  height:145px;
+  height:165px;
   background-color:Gainsboro;
 }
 
 .alert {
-  height:40px;
+  height:46px;
   width:400px;
   position:absolute;
 }
@@ -54,7 +50,9 @@
 }
 
 .user_account_activity_link {
- margin-top:-138px;
+  margin-top:-166px;
+  float:right;
+  margin-right:15px;
 }
 
 a {
@@ -67,6 +65,7 @@ a {
 
 .search_form {
   float:right;
+  margin-top:-42px;
 }
 
 .pagination a {
@@ -93,8 +92,12 @@ a {
 }
 
 .logo img {
- height:65px;
- width:473px;
+  height:90px;
+  width:473px;
+}
+
+.logo {
+  width:473px;
 }
 
 .nav a:hover {
