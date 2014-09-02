@@ -1,5 +1,5 @@
 <div class = "header">
-  <div class = "logo"><%= image_tag 'header.jpeg' %></div>
+  <%= link_to image_tag("header.jpeg", :title => "Go to homepage"), students_path, :class => 'logo' %>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
