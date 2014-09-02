@@ -54,24 +54,6 @@ class StudentsController < ApplicationController
     end
   end
 
-   # This action for account deactivation process 
-  def deactivate
-    @deactivate = params[:table_name].constantize.find(params[:id])
-    @deactivate.is_active = 0
-    @deactivate.save
-    StudentMailer.account_deactivated(@deactivate).deliver
-    redirect_to students_url
-  end
-
-  # This action for account activatation process
-  def activate
-    @activate = params[:table_name].constantize.find(params[:id])
-    @activate.is_active = 1
-    @activate.save
-    StudentMailer.account_activated(@activate).deliver
-    redirect_to students_url
-  end
-
   # This action permit all accessible attributes
   def student_params
     params.require(:student).permit(:name, :email, :phone_no, :password, :password_confirmation)
