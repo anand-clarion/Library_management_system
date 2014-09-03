@@ -1,0 +1,34 @@
+<h4>Book - <%= @book.title %></h4>
+<table>
+  <tr>
+    <th>Sr no.</th>
+    <th>Copy Id</th>
+    <th>Assigned</th>
+    <th>Student</th>
+    <% if can? :manage, @book %>
+      <th>Action</th>
+    <% end %>
+  </tr>
+  <% @book_copies.each_with_index do |copy, n| %>
+    <tr>
+      <td><%= n+1 %></td>
+      <td><%= copy.id %></td>
+      <% if copy.is_assigned? %>
+        <td>Yes</td>
+        <td><%= link_to @transactions[n].student.name, student_path(@transactions[n].student.id) %></td>
+      <% else %>
+        <td>No</td>
+        <td>-</td>
+      <% end %>
+      <% if can? :manage, @book %>
+        <%if !copy.is_assigned? %>
+          <td>
+            <button class = "btn btn-danger btn-sm active_button_class" title = "Deactivate book copy" value = "<%= copy.id %>" table = "<%= copy.class %>"><%= check_current_status(copy.id, copy.class) %></button>
+          </td>
+        <% else %>
+          <td> - </td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -24,7 +24,7 @@ class BooksController < ApplicationController
   # This actio show all book copies of a book
   def show
     @book = Book.find(params[:id])
-    @book_copies = @book.book_copies
+    @book_copies = @book.book_copies.paginate(:page => params[:page], :per_page => 10)
     @transactions = @book.book_transactions.where(return_date: nil)
   end
 
@@ -56,6 +56,19 @@ class BooksController < ApplicationController
     end
   end
 
+  # This action update book copies based on ajax request.
+  def update_bookcopies
+    @book = Book.find(params[:book_id])
+    @transactions = @book.book_transactions.where(return_date: nil)
+    if params[:value] == "all"
+      @book_copies = @book.book_copies
+    elsif params[:value] == "assigned"
+      @book_copies = @book.book_copies.where(is_assigned: true)
+    else
+      @book_copies = @book.book_copies.where(is_assigned: false)
+    end
+  end
+  
   # This action permit all accessible attributes
   def book_params
     params.require(:book).permit(:title, :author, :no_of_copy)
