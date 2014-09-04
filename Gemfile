@@ -44,5 +44,6 @@ gem 'cancan'
 gem 'jquery-turbolinks'
 gem 'will_paginate', '~> 3.0'
 gem 'jquery-validation-rails'
+gem "paperclip", "~> 4.2"
 
 

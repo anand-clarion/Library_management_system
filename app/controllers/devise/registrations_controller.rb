@@ -141,12 +141,12 @@ class Devise::RegistrationsController < DeviseController
 
   def sign_up_params
     # devise_parameter_sanitizer.sanitize(:sign_up)
-    params.require(:student).permit(:name, :city, :phone_no, :email, :password, :password_confirmation)
+    params.require(:student).permit(:name, :city, :phone_no, :email, :password, :password_confirmation, :avatar)
   end
 
   def account_update_params
     # devise_parameter_sanitizer.sanitize(:account_update)
-    params.require(:student).permit(:name, :city, :phone_no, :email, :password, :password_confirmation, :current_password)
+    params.require(:student).permit(:name, :city, :phone_no, :email, :password, :password_confirmation, :current_password, :avatar)
 
   end
 end
