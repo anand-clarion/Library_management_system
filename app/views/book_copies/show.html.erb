@@ -1,0 +1,7 @@
+<h3>Book Copy Id - <%= @book_copy.id %></h3>
+<h3>BookCopy Title - <%= link_to @book_copy.book.title, book_path(@book_copy.book) %></h3>
+<%if !@book_copy.is_assigned? %>
+  <button class = "btn btn-danger btn-sm active_button_class" title = "Deactivate book copy" value = "<%= @book_copy.id %>" table = "<%= @book_copy.class %>"><%= check_current_status(@book_copy.id, @book_copy.class) %></button>
+<% else %>
+  <h3> Book copy assigned</h3>
+<% end %>

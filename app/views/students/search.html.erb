@@ -39,4 +39,10 @@
       </tr>
     <% end %>
   </table>
+<% end %><br><br><br>
+
+<% if !@search_copy.empty? %>
+  <% @search_copy.each do |n| %>
+    Book Copy-<%= link_to n.id, book_copy_path(n.id) %>
+  <% end %>
 <% end %>

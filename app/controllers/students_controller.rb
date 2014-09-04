@@ -48,6 +48,7 @@ class StudentsController < ApplicationController
     if !params[:search].empty?
       @search_student = Student.search(params[:search])
       @search_book = Book.search(params[:search])
+      @search_copy = BookCopy.search(params[:search])
     else
       flash[:notice] = "Cant search for empty string"
       redirect_to students_url
@@ -56,7 +57,7 @@ class StudentsController < ApplicationController
 
   # This action permit all accessible attributes
   def student_params
-    params.require(:student).permit(:name, :email, :phone_no, :password, :password_confirmation)
+    params.require(:student).permit(:name, :email, :phone_no, :password, :password_confirmation, :avatar)
   end
 
 end
