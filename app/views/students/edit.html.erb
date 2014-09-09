@@ -25,6 +25,11 @@
       <%= f.text_field :phone_no, :class => "required form-control" %>
     </div><br>
 
+    <div>
+      <%= f.file_field :avatar %><br>
+      <%= image_tag @student.avatar.url %>
+    </div><br>
+
     <div><%= f.submit class: 'btn btn-primary' %></div>
   </div>
 <% end %>

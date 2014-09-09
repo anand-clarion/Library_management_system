@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'students#index'
   post '/students/save' => 'students#save'
-  get "/deactivate" => "students#deactivate"
-  get "/activate" => "students#activate"
+  get "/deactivate" => "application#deactivate"
+  get "/activate" => "application#activate"
+  get "/update_bookcopies" => "books#update_bookcopies"
 
   resources :students do 
     collection do

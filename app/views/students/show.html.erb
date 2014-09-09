@@ -1,42 +1,48 @@
 <div><b>Name - <%= @student.name %></b></div>
 <div><b>Email - <%= @student.email %></b></div>
-<div><b>Phone - <%= @student.phone_no %></b></div>
+<div><b>Phone - <%= @student.phone_no %></b></div><br>
+<div class = "image_container" >
+  <%= image_tag @student.avatar.url %>
+</div><br>
+
 <% if can? :manage, @students %>
   <% if !@student.is_admin?  %>
-    <button class = "btn btn-danger btn-sm" id = "active_button" title = "Deactivate this student" value = "<%= @student.id %>" table = "<%= @student.class %>"><%= check_current_status(@student.id) %></button>
+    <button class = "btn btn-danger btn-sm active_button_class" title = "Deactivate this student" value = "<%= @student.id %>" table = "<%= @student.class %>"><%= check_current_status(@student.id, @student.class) %></button>
     <%= link_to "Edit", edit_student_path(@student), :class => "btn btn-info btn-sm", :title => "Edit student information" %>
   <% end %>
 <% end %>
 <center>
-  <% if @books_assigned_to_student.empty? %>
-    <p>No book assigned</p>
-  <% else %>
-    <p><b>Assigned Book</b></p> 
-    <table>
-      <tr>
-        <th>Sr. No</th>
-        <th>Book Title</th>
-        <th>Issue date</th>
-        <th>Fine on Book</th>
-        <% if can? :manage, current_student %>
-          <th>Return Book</th>
-        <% end %>
-      </tr>
-      <% @books_assigned_to_student.each_with_index do |transaction, n| %>
+  <div class = "student_info_container">
+    <% if @books_assigned_to_student.empty? %>
+      <p>No book assigned</p>
+    <% else %>
+      <p><b>Assigned Book</b></p> 
+      <table>
         <tr>
-          <td><%= n+1 %></td>
-          <td><%= transaction.book.title.capitalize() %></td>
-          <td><%= transaction.issue_date.to_formatted_s(:long_ordinal) %></td>
-          <% if fine_calculation(transaction.id) > 15 %>
-            <td><%= fine_calculation(transaction.id) - 15 %></td>
-          <% else %>
-            <td><%= transaction.fine %></td>
-          <% end %>
+          <th>Sr. No</th>
+          <th>Book Title</th>
+          <th>Issue date</th>
+          <th>Fine on Book</th>
           <% if can? :manage, current_student %>
-            <td><%= link_to "Return Book", edit_book_transaction_path(transaction) %></td>
+            <th>Return Book</th>
           <% end %>
         </tr>
-      <% end %>
-    </table>
-  <% end %>
+        <% @books_assigned_to_student.each_with_index do |transaction, n| %>
+          <tr>
+            <td><%= n+1 %></td>
+            <td><%= transaction.book.title.capitalize() %></td>
+            <td><%= transaction.issue_date.to_formatted_s(:long_ordinal) %></td>
+            <% if fine_calculation(transaction.id) > 15 %>
+              <td><%= fine_calculation(transaction.id) - 15 %></td>
+            <% else %>
+              <td><%= transaction.fine %></td>
+            <% end %>
+            <% if can? :manage, current_student %>
+              <td><%= link_to "Return Book", edit_book_transaction_path(transaction) %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
 </center>

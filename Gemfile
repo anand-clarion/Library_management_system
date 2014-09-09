@@ -40,9 +40,12 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'jquery-timepicker-addon-rails'
 gem 'jquery-ui-rails'
-gem 'cancan'
-gem 'jquery-turbolinks'
-gem 'will_paginate', '~> 3.0'
-gem 'jquery-validation-rails'
+gem 'cancan', group: :development
+gem 'jquery-turbolinks', group: :development
+gem 'will_paginate', '~> 3.0', group: :development
+gem 'jquery-validation-rails', group: :development
+gem "paperclip", "~> 4.2"
 
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
 
