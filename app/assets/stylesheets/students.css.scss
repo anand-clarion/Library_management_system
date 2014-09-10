@@ -30,14 +30,23 @@
 }
 
 .image_container {
-  width:100px;
+  width:130px;
 }
 
 .student_info_container {
-  margin-top:-121px;
+  margin-top:-138px;
+}
+
+.student_info_container p {
+  margin-left:170px;
 }
 
 img {
   height:100px;
   width:100px;
+}
+
+.mail_to_link_container {
+ float:right;
+ margin-top:10px;
 }

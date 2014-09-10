@@ -10,7 +10,9 @@ class Student < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "100x100#", :thumb => "100x100>" }, :default_url => "user.gif"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  validates :avatar, :attachment_presence => true, on: :create
+
+  has_attached_file :avatar1, :default_url => "logo.gif"
+  validates_attachment_content_type :avatar1, :content_type => /\Aimage\/.*\Z/
 
   # This action search for matched data in table for search action 
   def self.search(search)

@@ -31,7 +31,7 @@ class BookTransactionsController < ApplicationController
     @book_transaction = BookTransaction.find(params[:id])
     if @book_transaction.update_attributes(book_transaction_params)
       flash[:notice] = "Transaction information successfully updated"
-      redirect_to book_transactions_url
+      redirect_to students_url
     else
       render "edit"
     end

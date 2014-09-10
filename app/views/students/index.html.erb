@@ -1,5 +1,9 @@
 <% if @students.empty? %>
-  <center><h3>No student except you</h3></center>
+  <center><h3>No student except you</h3>
+  <% if can? :create, @students %>
+      <%= link_to 'Add new student', new_student_path, :title => "Add a new student" %>
+    <% end %> 
+  </center>
 <% else %>
   <div>
     <h3> Students List </h3>

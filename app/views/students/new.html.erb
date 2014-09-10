@@ -37,6 +37,12 @@
 
     <div>
       <%= f.file_field :avatar %>
+      <img id="img_prev" src="#" alt="" />
+    </div><br>
+
+    <div id = "image_div" style = "display:none">
+      <%= f.file_field :avatar1 %>
+      <img id="img_prev2" src="#" alt="" />
     </div><br>
 
     <div><%= f.submit class: 'btn btn-primary' %></div>

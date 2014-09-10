@@ -12,33 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require owl.carousel
 //= require jquery.turbolinks
 //= require turbolinks
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon
 //= require bootstrap
 //= require_tree .
-$(document).on('ready page:load', function () {
-  $(function() {
-    $(".active_button_class").on("click", function() {
-      var id = $(this).val();
-      var table_name =  $(this).attr("table");
-      if ($(this).text() == "Deactivate") {
-        $.ajax({
-          url: "/deactivate",
-          type: "GET",
-          data: { "id" : id, "table_name" : table_name }
-        });
-        $(this).text("Activate");
-      }
-      else {
-        $.ajax({
-          url: "/activate",
-          type: "GET",
-          data: { "id" : id, "table_name" : table_name }
-        });
-        $(this).text("Deactivate")
-      }
-    });
-  });
-});
+

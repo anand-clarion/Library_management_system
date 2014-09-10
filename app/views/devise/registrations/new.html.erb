@@ -16,7 +16,17 @@
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div><br>
+
+  <div>
+    <%= f.file_field :avatar %>
+    <img id="img_prev" src="#" alt="" />
+  </div><br>
+
+   <div id = "image_div" style = "display:none">
+    <%= f.file_field :avatar1 %>
+    <img id="img_prev2" src="#" alt="" />
+  </div><br>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

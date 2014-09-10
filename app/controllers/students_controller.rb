@@ -57,7 +57,7 @@ class StudentsController < ApplicationController
 
   # This action permit all accessible attributes
   def student_params
-    params.require(:student).permit(:name, :email, :phone_no, :password, :password_confirmation, :avatar)
+    params.require(:student).permit(:name, :email, :phone_no, :password, :password_confirmation, :avatar, :avatar1)
   end
 
 end

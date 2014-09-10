@@ -1,16 +1,21 @@
+<div class = "mail_to_link_container">
+  <a href="mailto:<%= @student.email %>?Subject=Hello%20again">Click here to mail: <%= @student.name %></a>
+</div>
 <div><b>Name - <%= @student.name %></b></div>
 <div><b>Email - <%= @student.email %></b></div>
 <div><b>Phone - <%= @student.phone_no %></b></div><br>
-<div class = "image_container" >
+<div id = "owl-demo" class = "image_container" >
   <%= image_tag @student.avatar.url %>
+  <%= image_tag @student.avatar1.url %>
 </div><br>
 
 <% if can? :manage, @students %>
   <% if !@student.is_admin?  %>
     <button class = "btn btn-danger btn-sm active_button_class" title = "Deactivate this student" value = "<%= @student.id %>" table = "<%= @student.class %>"><%= check_current_status(@student.id, @student.class) %></button>
-    <%= link_to "Edit", edit_student_path(@student), :class => "btn btn-info btn-sm", :title => "Edit student information" %>
+    <%= link_to "Edit", edit_student_path(@student), :class => "btn btn-success btn-sm", :title => "Edit student information" %>
   <% end %>
 <% end %>
+
 <center>
   <div class = "student_info_container">
     <% if @books_assigned_to_student.empty? %>
@@ -46,3 +51,5 @@
     <% end %>
   </div>
 </center>
+
+<%= hidden_field_tag :student_book_count, @books_assigned_to_student.count %>

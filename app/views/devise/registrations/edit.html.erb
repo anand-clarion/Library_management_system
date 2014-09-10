@@ -26,8 +26,13 @@
     <%= f.password_field :current_password, autocomplete: "off" %></div>
 
   <div>
-    <%= f.file_field :avatar %><br>
-    <%= image_tag @student.avatar.url %>
+    <%= f.file_field :avatar %>
+    <%= image_tag @student.avatar.url, :id => "img_prev" %>
+  </div><br>
+
+  <div>
+    <%= f.file_field :avatar1 %>
+    <%= image_tag @student.avatar1.url, :id => "img_prev2" %>
   </div><br>
 
   <div><%= f.submit "Update" %></div>
