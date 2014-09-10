@@ -46,6 +46,6 @@ gem 'will_paginate', '~> 3.0'
 gem 'jquery-validation-rails'
 gem "paperclip", "~> 4.2"
 
-gem 'pg', group: :production
 gem 'rails_12factor', group: :production
+gem 'pg', group: :production
 
