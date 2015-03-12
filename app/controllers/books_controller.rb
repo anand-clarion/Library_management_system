@@ -5,7 +5,7 @@ class BooksController < ApplicationController
     @books = Book.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 6)
   end
 
-  # This action created a new book's instance  
+  # This action created a new book's instance
   def new
     @book = Book.new
   end
@@ -68,7 +68,7 @@ class BooksController < ApplicationController
       @book_copies = @book.book_copies.where(is_assigned: false)
     end
   end
-  
+
   # This action permit all accessible attributes
   def book_params
     params.require(:book).permit(:title, :author, :no_of_copy)

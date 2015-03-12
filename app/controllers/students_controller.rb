@@ -2,7 +2,8 @@ class StudentsController < ApplicationController
 
   # This action show all students list
   def index
-    @students = Student.where.not(id: current_student.id).paginate(:page => params[:page], :per_page => 6) 
+    @students = Student.where.not(id: current_student.id).paginate(:page => params[:page], :per_page => 6)
+    flash[:notice] = "signed"
   end
 
   # This action create a new student object
@@ -18,13 +19,13 @@ class StudentsController < ApplicationController
       redirect_to students_url
     else
       render "new"
-    end 
+    end
   end
 
   # This action show a student information
   def show
-    @student = Student.find(params[:id]) 
-    @books_assigned_to_student = @student.book_transactions.where(return_date: nil) 
+    @student = Student.find(params[:id])
+    @books_assigned_to_student = @student.book_transactions.where(return_date: nil)
   end
 
   # This action edit a student information.

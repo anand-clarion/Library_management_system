@@ -1,6 +1,8 @@
 <% if @books.empty? %>
   <center><h3>No Book</h3></center>
-  <%= link_to 'Add book', new_book_path %> 
+  <% if can? :manage, @books %>
+    <%= link_to 'Add book', new_book_path %>
+  <% end %>
 <% else %>
   <div>
     <h3> books List </h3>
@@ -31,7 +33,7 @@
       <% end %>
     </table>
     <% if can? :manage, @books %>
-      <%= link_to 'Add book', new_book_path, :title => "Add a new Book" %> 
+      <%= link_to 'Add book', new_book_path, :title => "Add a new Book" %>
     <% end %>
   </div>
 <% end %>

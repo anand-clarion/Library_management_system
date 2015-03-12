@@ -14,7 +14,7 @@ class Student < ActiveRecord::Base
   has_attached_file :avatar1, :default_url => "logo.gif"
   validates_attachment_content_type :avatar1, :content_type => /\Aimage\/.*\Z/
 
-  # This action search for matched data in table for search action 
+  # This action search for matched data in table for search action
   def self.search(search)
     if search
       where("name like ? OR id like ? ", "%#{search}%","%#{search}%")
@@ -30,5 +30,5 @@ class Student < ActiveRecord::Base
   def inactive_message
     "Sorry, this account has been deactivated. Please contact to Admin"
   end
-  
+
 end

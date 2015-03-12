@@ -1,6 +1,6 @@
 <div class = "header", id ="header_id">
   <%= link_to image_tag("header.jpeg", :title => "Go to homepage"), students_path, :class => 'logo' %>
-   <div id = "flash_message">  
+   <div id = "flash_message">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: "alert alert-info" %>
     <% end %>
@@ -22,9 +22,9 @@
       <span><%= link_to "Sign out", destroy_student_session_path,:method => :delete, :class => "btn btn-primary", :title => "Log-out" %></span>
     </div>
     <div class = "search_form">
-      <%= form_tag (search_students_path) do %>  
-        <%= text_field_tag :search, params[:search], placeholder: "Search", :size =>"25" %> 
-        <%= submit_tag "Search" %>     
+      <%= form_tag (search_students_path) do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search", :size =>"25" %>
+        <%= submit_tag "Search" %>
       <% end %>
     </div>
   <% end %>

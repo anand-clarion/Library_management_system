@@ -4,8 +4,9 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: 
+  email: ajay@gmail.com
+  encrypted_password: $2a$04$Mg39VaIIttb5TJlhDZWhb.3jHZJ4HuFweQClHROK17aSiNyNFzCAa
 # column: value
 #
-two: {}
-#  column: value
+# <%= Devise.bcrypt(Student, 'test12345') %>
